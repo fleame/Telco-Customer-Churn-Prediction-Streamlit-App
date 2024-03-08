@@ -59,7 +59,7 @@ st.write('Data Dimension: ' + str(df_churn.shape[0]) + ' rows and ' + str(df_chu
 st.dataframe(df_churn)
 
 
-@st.cache
+@st.cache_data
 def download_dataset(df):
     csv = df.to_csv(index=False)
     b64 = base64.b64encode(csv.encode()).decode()  # strings <-> bytes conversions
@@ -67,7 +67,7 @@ def download_dataset(df):
     return href
 
 
-st.set_option('deprecation.showPyplotGlobalUse', False)
+# st.set_option('deprecation.showPyplotGlobalUse', False)
 st.markdown(download_dataset(df_churn), unsafe_allow_html=True)
 
 st.markdown("## Prediction Result")
